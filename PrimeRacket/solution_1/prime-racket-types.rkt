@@ -86,12 +86,12 @@
                         (println (format "diego-e-crespo;~a;~a;l;algorithm=base,faithful=yes" passes duration))
                         )))
 
-(let ([start-time : Flonum (current-inexact-milliseconds)]
-      [five-seconds : Positive-Integer 5]
-      [max : Positive-Integer 10000])
-  (let loop ([passes : Positive-Integer 1])
-    (define sieve : (Instance prime-sieve%) (new prime-sieve% [limit max]))
+(let ([start-time (current-inexact-milliseconds)]
+      [five-seconds 5]
+      [max 100])
+  (let loop ([passes 1])
+    (define sieve (Instance prime-sieve%) (new prime-sieve% [limit max]))
     (send sieve run-sieve)
-    (if (>= (- (current-inexact-milliseconds) start-time) 5)
-        (send sieve print-results #f (- (current-inexact-milliseconds) start-time) passes)
+    (if (>= (- (/ (current-inexact-milliseconds) 1000) (/ start-time 1000)) 5)
+        (send sieve print-results #f (- (/ (current-inexact-milliseconds) 1000) (/ start-time 1000)) passes)
         (loop (+ passes 1)))))
