@@ -58,9 +58,7 @@
                             (set! factor (+ factor 2))
 
                             (unless (> factor (cast q Real))
-                              (loop)))
-
-                          )
+                              (loop))))
 
                         (: count-primes (-> Integer))
                         (define (count-primes)
@@ -86,8 +84,7 @@
                                           passes duration (/ duration passes) sieve-size count (validate-results)))
 
                          (displayln "")
-                         (println (format "diego-e-crespo;~a;~a;l;algorithm=base,faithful=yes" passes duration))
-                        )))
+                         (println (format "diego-e-crespo;~a;~a;l;algorithm=base,faithful=yes" passes duration)))))
 
 
  (let ([start-time (current-inexact-milliseconds)]
