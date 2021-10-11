@@ -3,7 +3,7 @@
          rackunit
          racket/class)
 
-(define prime-sieve (class
+(define prime-sieve% (class
                       object%
                       (init-field limit)
                       (super-new)
@@ -87,7 +87,7 @@
       [five-seconds 5]
       [max 1000000])
   (let loop ([passes 1])
-    (define sieve (new prime-sieve [limit max]))
+    (define sieve (new prime-sieve% [limit max]))
     (send sieve run-sieve)
     (if (>= (- (/ (current-inexact-milliseconds) 1000) (/ start-time 1000)) 5)
         (send sieve print-results #f (- (/ (current-inexact-milliseconds) 1000) (/ start-time 1000)) passes)

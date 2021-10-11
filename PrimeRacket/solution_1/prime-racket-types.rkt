@@ -3,7 +3,7 @@
          typed/rackunit
          typed/racket/class)
 
-(define prime-sieve : Object% (class
+(define prime-sieve% : Object% (class
                       object%
                       (init-field limit : Positive-Integer)
                       (super-new)
@@ -90,7 +90,7 @@
       [five-seconds : Positive-Integer 5]
       [max : Positive-Integer 10000])
   (let loop ([passes : Positive-Integer 1])
-    (define sieve : (Instance prime-sieve) (new prime-sieve [limit max]))
+    (define sieve : (Instance prime-sieve%) (new prime-sieve% [limit max]))
     (send sieve run-sieve)
     (if (>= (- (current-inexact-milliseconds) start-time) 5)
         (send sieve print-results #f (- (current-inexact-milliseconds) start-time) passes)
